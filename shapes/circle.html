@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Circle Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Italiana&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../assets/boy.jpg');
+  background-size: cover;           /* Makes image cover entire page */
+  background-position: center;      /* Center the image */
+  background-repeat: no-repeat;     /* Prevent tiling */
+  background-attachment: fixed;     /* Optional: scroll effect */
+  color: white;
+  width: 100%;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.637); /* Change 0.6 to desired darkness */
+  z-index: -1;
+}
+
+.left-panel {
+  flex:  1;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.shape-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+.container {
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+      z-index: 2;
+      padding-top: 3rem;
+    }
+
+
+.card select, .card input, .card button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+
+.card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: clamp(1rem, 4vw, 2rem);
+      border-radius: 20px;
+      width: min(90%, 500px);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgb(233, 233, 233);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+      margin: 1rem;
+    }
+
+
+
+.card h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+
+.card input {
+      background: rgba(255, 255, 255, 0.15);
+      width: calc(100% - 1.6rem);
+      color: #fff;
+    }
+
+
+.card button {
+      background: #591d95;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.container {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin:  0 auto;
+}
+
+.title {
+  font-family: 'Italiana', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.fun-fact {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  background-color: rgba(156, 135, 135, 0.1);
+  padding: 1rem;
+  border-radius: 15px;
+  line-height: 1.5;
+}
+
+.back a {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: hsl(0, 0%, 100%);
+}
+
+
+
+/* Make the whole page take full height */
+
+
+/* Content grows to fill the space before footer */
+
+/* Footer styles */
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+
+  color: white;
+  padding: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+
+/* Optional: Prevent content from hiding behind nav */
+body {
+  padding-top: 80px;
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+  <div class="bg-overlay"></div>
+  <div class="container">
+    <div class="shape-grid">
+      <div class="left-panel">
+        <h1 class="title">CIRCLE CALCULATOR</h1>
+        <p class="fun-fact">FUN FACT: A circle has the shortest perimeter for a given area! That’s why bubbles form as circles — it’s the most efficient shape!</p>
+      </div>
+      <div class="right-panel">
+
+      <div class="card">
+        <h1>Circle Calculator</h1>
+        <select id="calcType" onchange="updateFields()">
+          <option value="area-full">Area - Full Circle</option>
+          <option value="area-half">Area - Half Circle</option>
+          <option value="area-sector">Area - Custom Sector</option>
+          <option value="circum-full">Circumference - Full Circle</option>
+          <option value="circum-half">Circumference - Half Circle (with diameter)</option>
+          <option value="circum-half-nodiam">Circumference - Half Circle (arc only)</option>
+          <option value="circum-sector">Circumference - Sector (with radii)</option>
+          <option value="circum-sector-noradii">Circumference - Sector (arc only)</option>
+        </select>
+
+        <input type="number" id="radius" placeholder="Enter radius" />
+        <input type="number" id="degrees" placeholder="Enter degrees (if needed)" style="display: none;" />
+
+        <button onclick="calculate()">Calculate</button>
+        <div id="result"></div>
+        <p>π (Pi) is approximately: <strong>3.14</strong></p>
+        <div class="back">
+          <a href="../app.html">← Let me pick Another Shape</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+  <div class="footer">
+    <p>Made with ❤️ by <a href="https://justelson.github.io/my-official-website/">JUST ELSON</a></p>
+  </div>
+  <script>
+    function updateFields() {
+      const calcType = document.getElementById('calcType').value;
+      const degreesField = document.getElementById('degrees');
+      if (calcType.includes("sector")) {
+        degreesField.style.display = 'block';
+      } else {
+        degreesField.style.display = 'none';
+      }
+    }
+
+    function pie() {
+      return 22 / 7;
+    }
+
+    function calculate() {
+      const type = document.getElementById("calcType").value;
+      const r = parseFloat(document.getElementById("radius").value);
+      const deg = parseFloat(document.getElementById("degrees").value);
+      const resultEl = document.getElementById("result");
+
+      if (isNaN(r) || r <= 0) {
+        resultEl.textContent = "Please enter a valid radius.";
+        return;
+      }
+
+      let result = 0;
+
+      switch (type) {
+        case "area-full":
+          result = pie() * r * r;
+          resultEl.textContent = `Full Area: ${result.toFixed(2)}`;
+          break;
+        case "area-half":
+          result = (pie() * r * r) / 2;
+          resultEl.textContent = `Half Area: ${result.toFixed(2)}`;
+          break;
+        case "area-sector":
+          if (isNaN(deg)) {
+            resultEl.textContent = "Please enter valid degrees.";
+            return;
+          }
+          result = (pie() * r * r) * (deg / 360);
+          resultEl.textContent = `Sector Area (${deg}°): ${result.toFixed(2)}`;
+          break;
+        case "circum-full":
+          result = 2 * pie() * r;
+          resultEl.textContent = `Full Circumference: ${result.toFixed(2)}`;
+          break;
+        case "circum-half":
+          result = (2 * pie() * r) / 2 + 2 * r;
+          resultEl.textContent = `Half Circumference (with diameter): ${result.toFixed(2)}`;
+          break;
+        case "circum-half-nodiam":
+          result = (2 * pie() * r) / 2;
+          resultEl.textContent = `Half Circumference (arc only): ${result.toFixed(2)}`;
+          break;
+        case "circum-sector":
+          if (isNaN(deg)) {
+            resultEl.textContent = "Please enter valid degrees.";
+            return;
+          }
+          result = (2 * pie() * r) * (deg / 360) + 2 * r;
+          resultEl.textContent = `Sector Circumference (${deg}° with radii): ${result.toFixed(2)}`;
+          break;
+        case "circum-sector-noradii":
+          if (isNaN(deg)) {
+            resultEl.textContent = "Please enter valid degrees.";
+            return;
+          }
+          result = (2 * pie() * r) * (deg / 360);
+          resultEl.textContent = `Arc Length (${deg}°): ${result.toFixed(2)}`;
+          break;
+      }
+    }
+    
+function toggleMenu() {
+const menu = document.getElementById("navMenu");
+    menu.classList.toggle("show");
+  }
+
+    updateFields();
+
+  </script>
+</div>        
+</div>
+</body>
+</html>

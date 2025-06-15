@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shapie – Shape Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('assets/small.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bg-overlay {
+      position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.637); /* Change 0.6 to desired darkness */
+  z-index: -1;
+}
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+      z-index: 2;
+      padding-top: 3rem;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: float 3s ease-in-out infinite;
+      color: white;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .shape-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer {
+  width: 100%;
+  color: white;
+  padding: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+     .footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+}
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @media (max-width: 768px) {
+      .title {
+        font-size: 2rem;
+      }
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <div class="container">
+    <div class="logo">🔷</div>
+    <div class="title">Hello, I'm Shapie</div>
+    <div class="subtitle">Your personal shape calculator assistant.  
+      <br>What would you like to work on today?
+    </div>
+
+    <div class="shape-grid">
+      <div class="card" onclick="location.href='shapes/rectangle.html'">
+        <div class="card-icon">🟥</div>
+        <div class="card-title">Rectangle</div>
+        <div class="card-desc">Calculate area or perimeter of rectangles & squares.</div>
+      </div>
+
+      <div class="card" onclick="location.href='shapes/circle.html'">
+        <div class="card-icon">🟠</div>
+        <div class="card-title">Circle</div>
+        <div class="card-desc">Full, half or sector area and arc/circumference.</div>
+      </div>
+
+      <div class="card" onclick="location.href='shapes/trapezium.html'">
+        <div class="card-icon">⏢</div>
+        <div class="card-title">Trapezium</div>
+        <div class="card-desc">Compute area or perimeter using base and sides.</div>
+      </div>
+
+      <div class="card" onclick="location.href='shapes/triangle.html'">
+        <div class="card-icon">🔺</div>
+        <div class="card-title">Triangle</div>
+        <div class="card-desc">Solve for area, perimeter, or use Pythagorean logic.</div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Made with ❤️ by <a href="https://justelson.github.io/my-official-website/">JUST ELSON</a></p>
+    </div>
+  </div>
+</body>
+</html>

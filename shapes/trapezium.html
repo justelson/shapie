@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trapezium Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Italiana&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../assets/big.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  width: 100%;
+  padding-top: 80px;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.637);
+  z-index: -1;
+}
+
+.left-panel {
+  flex: 1;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.shape-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  z-index: 2;
+  padding-top: 3rem;
+  flex-direction: row;
+  display: flex;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: clamp(1rem, 4vw, 2rem);
+  border-radius: 20px;
+  width: min(90%, 500px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgb(233, 233, 233);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+  margin: 1rem;
+}
+
+.card h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.card select, .card input, .card button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.card input {
+  background: rgba(255, 255, 255, 0.15);
+  width: calc(100% - 1.6rem);
+  color: #fff;
+}
+
+.card button {
+  background: #591d95;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.back {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-align: center;
+}
+
+.back a {
+  color: white;
+  text-decoration: none;
+}
+
+.title {
+  font-family: 'Italiana', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.fun-fact {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  background-color: rgba(156, 135, 135, 0.1);
+  padding: 1rem;
+  border-radius: 15px;
+  line-height: 1.5;
+}
+
+.footer {
+  width: 100%;
+  color: white;
+  padding: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+}
+</style>
+
+<body>
+  <div class="bg-overlay"></div>
+  <div class="container">
+    <div class="shape-grid">
+      <div class="left-panel">
+        <h1 class="title">TRAPEZIUM CALCULATOR</h1>
+        <p class="fun-fact">FUN FACT: The trapezium (or trapezoid) has only one pair of parallel sides. It's often seen in architecture, like in bridge supports and ancient temples!</p>
+      </div>
+      <div class="right-panel">
+        <div class="card">
+          <h1>Trapezium Calculator</h1>
+          <select id="operation" onchange="toggleFields()">
+            <option value="area">Area</option>
+            <option value="perimeter">Perimeter</option>
+          </select>
+
+          <input type="number" id="top" placeholder="Top (parallel side)" />
+          <input type="number" id="bottom" placeholder="Bottom (parallel side)" />
+          <input type="number" id="height" placeholder="Height" />
+          <input type="number" id="side1" placeholder="Non-parallel Side 1" style="display: none;" />
+          <input type="number" id="side2" placeholder="Non-parallel Side 2" style="display: none;" />
+
+          <button onclick="calculate()">Calculate</button>
+          <div id="result"></div>
+          <div class ="back">
+            <a href="../app.html">←  No! this shape is not my style...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="footer">
+    <p>Made with ❤️ by <a href="https://justelson.github.io/my-official-website/">JUST ELSON</a></p>
+  </div>
+  <script>
+    function toggleFields() {
+      const op = document.getElementById('operation').value;
+      const height = document.getElementById('height');
+      const side1 = document.getElementById('side1');
+      const side2 = document.getElementById('side2');
+
+      if (op === 'area') {
+        height.style.display = 'block';
+        side1.style.display = 'none';
+        side2.style.display = 'none';
+      } else {
+        height.style.display = 'none';
+        side1.style.display = 'block';
+        side2.style.display = 'block';
+      }
+    }
+
+    function calculate() {
+      const op = document.getElementById('operation').value;
+      const top = parseFloat(document.getElementById('top').value);
+      const bottom = parseFloat(document.getElementById('bottom').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const side1 = parseFloat(document.getElementById('side1').value);
+      const side2 = parseFloat(document.getElementById('side2').value);
+      const resultEl = document.getElementById('result');
+
+      if (isNaN(top) || isNaN(bottom)) {
+        resultEl.textContent = "Please enter valid top and bottom values.";
+        return;
+      }
+
+      let result = 0;
+
+      if (op === "area") {
+        if (isNaN(height)) {
+          resultEl.textContent = "Please enter a valid height.";
+          return;
+        }
+        result = 0.5 * (top + bottom) * height;
+        resultEl.textContent = `Area: ${result.toFixed(2)}`;
+      } else {
+        if (isNaN(side1) || isNaN(side2)) {
+          resultEl.textContent = "Please enter valid side values.";
+          return;
+        }
+        result = top + bottom + side1 + side2;
+        resultEl.textContent = `Perimeter: ${result.toFixed(2)}`;
+      }
+    }
+
+    toggleFields();
+  </script>
+</body>
+</html>

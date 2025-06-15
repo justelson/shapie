@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rectangle Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Italiana&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../assets/ball.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  width: 100%;
+  padding-top: 80px;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.637);
+  z-index: -1;
+}
+
+.left-panel {
+  flex: 1;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.shape-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  z-index: 2;
+  padding-top: 3rem;
+  flex-direction: row;
+  display: flex;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: clamp(1rem, 4vw, 2rem);
+  border-radius: 20px;
+  width: min(90%, 500px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgb(233, 233, 233);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+  margin: 1rem;
+}
+
+.card h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.card select, .card input, .card button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.card input {
+  background: rgba(255, 255, 255, 0.15);
+  width: calc(100% - 1.6rem);
+  color: #fff;
+}
+
+.card button {
+  background: #591d95;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.back a {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: hsl(0, 0%, 100%);
+}
+
+.title {
+  font-family: 'Italiana', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.fun-fact {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  background-color: rgba(156, 135, 135, 0.1);
+  padding: 1rem;
+  border-radius: 15px;
+  line-height: 1.5;
+}
+
+.footer {
+  width: 100%;
+  color: white;
+  padding: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+}
+</style>
+
+<body>
+  <div class="bg-overlay"></div>
+  <div class="container">
+    <div class="shape-grid">
+      <div class="left-panel">
+        <h1 class="title">RECTANGLE CALCULATOR</h1>
+        <p class="fun-fact">FUN FACT: Golden Rectangle — a special rectangle where the ratio of length to width is about 1.618, the Golden Ratio, found in art and nature!</p>
+      </div>
+      <div class="right-panel">
+        <div class="card">
+          <h1>Rectangle Calculator</h1>
+          <select id="operation">
+            <option value="area">Area</option>
+            <option value="perimeter">Perimeter</option>
+          </select>
+          <input type="number" id="length" placeholder="Enter Length (e.g. 5)" />
+          <input type="number" id="width" placeholder="Enter Width (e.g. 3)" />
+          <button onclick="calculate()">Calculate</button>
+          <div id="result"></div>
+          <div class="back">
+            <a href="../app.html">← Another shape please...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p>Made with ❤️ by <a href="https://justelson.github.io/my-official-website/">JUST ELSON</a></p>
+  </div>
+
+  <script>
+    function calculate() {
+      const operation = document.getElementById("operation").value;
+      const length = parseFloat(document.getElementById("length").value);
+      const width = parseFloat(document.getElementById("width").value);
+      const resultElement = document.getElementById("result");
+
+      if (isNaN(length) || isNaN(width)) {
+        resultElement.textContent = "Please enter valid numbers.";
+        return;
+      }
+
+      let result;
+      if (operation === "area") {
+        result = length * width;
+        resultElement.textContent = `Area: ${result.toFixed(2)}`;
+      } else {
+        result = 2 * (length + width);
+        resultElement.textContent = `Perimeter: ${result.toFixed(2)}`;
+      }
+    }
+  </script>
+</body>
+</html>
