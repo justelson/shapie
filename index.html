@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic meta tags for character encoding and responsive viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Custom favicon using emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔷</text></svg>">
   <title>Shapie – Shape Calculator</title>
   <style>
+    /* Reset default browser styles */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    /* Main body styles with background image and flex layout */
     body {
       font-family: 'Segoe UI', sans-serif;
       background-image: url('assets/small.png');
@@ -27,6 +32,7 @@
       align-items: center;
     }
 
+    /* Semi-transparent overlay to improve text readability */
     .bg-overlay {
       position: fixed;
   top: 0;
@@ -37,6 +43,7 @@
   z-index: -1;
 }
 
+    /* Main content container with max width and centering */
     .container {
       width: 90%;
       max-width: 1000px;
@@ -45,6 +52,7 @@
       padding-top: 3rem;
     }
 
+    /* Animated logo circle with glass effect */
     .logo {
       width: 90px;
       height: 90px;
@@ -61,6 +69,7 @@
       color: white;
     }
 
+    /* Main heading styles */
     .title {
       font-size: 3rem;
       font-weight: bold;
@@ -68,18 +77,21 @@
       margin-bottom: 0.5rem;
     }
 
+    /* Subtitle text styles */
     .subtitle {
       color: rgba(255, 255, 255, 0.8);
       font-size: 1.2rem;
       margin-bottom: 2rem;
     }
 
+    /* Responsive grid layout for shape cards */
     .shape-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1.5rem;
     }
 
+    /* Individual shape card with glass morphism effect */
     .card {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -91,6 +103,7 @@
       backdrop-filter: blur(10px);
     }
 
+    /* Hover animation for cards */
     .card:hover {
       transform: translateY(-10px);
       background: rgba(255, 255, 255, 0.2);

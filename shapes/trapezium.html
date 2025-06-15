@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic meta tags for character encoding and responsive viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Custom favicon using trapezium emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏢</text></svg>">
   <title>Trapezium Calculator</title>
+  <!-- Google Fonts imports for typography -->
   <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
@@ -11,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <style>
+/* Main body styles with background image */
 body {
   margin: 0;
   padding: 0;
@@ -25,6 +30,7 @@ body {
   padding-top: 80px;
 }
 
+/* Semi-transparent overlay for better readability */
 .bg-overlay {
   position: fixed;
   top: 0;
@@ -35,6 +41,7 @@ body {
   z-index: -1;
 }
 
+/* Left panel containing title and fun fact */
 .left-panel {
   flex: 1;
   padding: 2rem;
@@ -46,12 +53,14 @@ body {
   margin: 1rem;
 }
 
+/* Grid layout for responsive design */
 .shape-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
+/* Main container with flex layout */
 .container {
   width: 90%;
   max-width: 1000px;
@@ -63,6 +72,7 @@ body {
   margin: 0 auto;
 }
 
+/* Calculator card with glass morphism effect */
 .card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -76,12 +86,14 @@ body {
   margin: 1rem;
 }
 
+/* Card heading styles */
 .card h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #fff;
 }
 
+/* Form elements styling */
 .card select, .card input, .card button {
   width: 100%;
   padding: 0.8rem;
@@ -91,12 +103,14 @@ body {
   font-size: 1rem;
 }
 
+/* Input field styling with transparency */
 .card input {
   background: rgba(255, 255, 255, 0.15);
   width: calc(100% - 1.6rem);
   color: #fff;
 }
 
+/* Button styling with hover effect */
 .card button {
   background: #591d95;
   color: #fff;
@@ -104,6 +118,7 @@ body {
   transition: background 0.3s ease;
 }
 
+/* Right panel for calculator */
 .right-panel {
   flex: 1;
   display: flex;
@@ -112,6 +127,7 @@ body {
   color: white;
 }
 
+/* Back link styling */
 .back {
   margin-top: 3rem;
   font-size: 0.9rem;
@@ -124,12 +140,14 @@ body {
   text-decoration: none;
 }
 
+/* Title styling */
 .title {
   font-family: 'Italiana', cursive;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
+/* Fun fact box styling */
 .fun-fact {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
@@ -139,6 +157,7 @@ body {
   line-height: 1.5;
 }
 
+/* Footer styling */
 .footer {
   width: 100%;
   color: white;
@@ -182,7 +201,7 @@ body {
           <button onclick="calculate()">Calculate</button>
           <div id="result"></div>
           <div class ="back">
-            <a href="../index.html">←  No! this shape is not my style...</a>
+            <a href="../app.html">←  No! this shape is not my style...</a>
           </div>
         </div>
       </div>

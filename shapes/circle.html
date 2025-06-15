@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic meta tags for character encoding and responsive viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Custom favicon using circle emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭕</text></svg>">
   <title>Circle Calculator</title>
+  <!-- Google Fonts imports for typography -->
   <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
@@ -11,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <style>
+/* Main body styles with background image */
 body {
   margin: 0;
   padding: 0;
@@ -24,6 +29,7 @@ body {
   width: 100%;
 }
 
+/* Semi-transparent overlay for better readability */
 .bg-overlay {
   position: fixed;
   top: 0;
@@ -34,6 +40,7 @@ body {
   z-index: -1;
 }
 
+/* Left panel containing title and fun fact */
 .left-panel {
   flex:  1;
   padding: 2rem;
@@ -45,12 +52,14 @@ body {
   margin: 1rem;
 }
 
+/* Grid layout for responsive design */
 .shape-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
     }
 
+/* Main container styles */
 .container {
       width: 90%;
       max-width: 1000px;
@@ -60,6 +69,7 @@ body {
     }
 
 
+/* Form elements styling */
 .card select, .card input, .card button {
       width: 100%;
       padding: 0.8rem;
@@ -70,6 +80,7 @@ body {
     }
 
 
+/* Calculator card with glass morphism effect */
 .card {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
@@ -85,6 +96,7 @@ body {
 
 
 
+/* Card heading styles */
 .card h1 {
       font-size: 2rem;
       margin-bottom: 1rem;
@@ -92,6 +104,7 @@ body {
     }
 
 
+/* Input field styling with transparency */
 .card input {
       background: rgba(255, 255, 255, 0.15);
       width: calc(100% - 1.6rem);
@@ -99,12 +112,14 @@ body {
     }
 
 
+/* Calculate button styling */
 .card button {
       background: #591d95;
       color: #fff;
       cursor: pointer;
       transition: background 0.3s ease;
     }
+/* Right panel layout */
 .right-panel {
   flex: 1;
   display: flex;
@@ -113,20 +128,14 @@ body {
   color: white;
 }
 
-.container {
-  flex-direction: row;
-  display: flex;
-  width: 100%;
-  max-width: 1200px;
-  margin:  0 auto;
-}
-
+/* Typography styles */
 .title {
   font-family: 'Italiana', cursive;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
+/* Fun fact box styling */
 .fun-fact {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
@@ -136,20 +145,7 @@ body {
   line-height: 1.5;
 }
 
-.back a {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: hsl(0, 0%, 100%);
-}
-
-
-
-/* Make the whole page take full height */
-
-
-/* Content grows to fill the space before footer */
-
-/* Footer styles */
+/* Footer positioning and styling */
 .footer {
   position: fixed;
   width: 100%;
@@ -215,7 +211,7 @@ body {
         <div id="result"></div>
         <p>π (Pi) is approximately: <strong>3.14</strong></p>
         <div class="back">
-          <a href="../index.html">← Let me pick Another Shape</a>
+          <a href="../app.html">← Let me pick Another Shape</a>
         </div>
       </div>
     </div>
