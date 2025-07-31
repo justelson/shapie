@@ -62,11 +62,11 @@ To run these calculators locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+    git clone https://github.com/YOUR_USERNAME/Shapie.git
     ```
 2.  **Navigate to the project directory:**
     ```bash
-    cd YOUR_REPOSITORY_NAME
+    cd Shapie
     ```
 3.  **Open the HTML files in your browser:**
     *   Open `app.html` (if it exists) to see the main selection page.
