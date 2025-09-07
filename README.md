@@ -9,8 +9,8 @@ A collection of user-friendly, web-based calculators for determining various pro
 
 ## Live Demo
 
-**(Optional: If you deploy this, link to it here, e.g., using GitHub Pages)**
-https://justelson.github.io/shapie/  *(Replace with actual link if available)*
+
+https://justelson.github.io/shapie/  
 
 ## Features
 
