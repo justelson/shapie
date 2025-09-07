@@ -4,180 +4,31 @@
   <!-- Basic meta tags for character encoding and responsive viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- Custom favicon using rectangle emoji -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🟦</text></svg>">
+  <!-- Favicon: rectangle logo -->
+  <link rel="icon" href="../assets/shapelogos/rectangle.png">
   <title>Rectangle Calculator</title>
-  <!-- Google Fonts imports for typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Italiana&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
 </head>
-<style>
-/* Main body styles with background image */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background-image: url('../assets/ball.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: white;
-  width: 100%;
-  padding-top: 80px;
-}
+<body class="bg-rectangle" data-random-bg="true">
 
-/* Semi-transparent overlay for better readability */
-.bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.637);
-  z-index: -1;
-}
+  <header class="hero-section">
+    <div class="container">
+      <div class="logo"><img src="../assets/shapelogos/rectangle.png" alt="Rectangle logo"/></div>
+      <h1 class="title">RECTANGLE</h1>
+      <p class="subtitle">Rectangle tools — area and perimeter helpers for rectangles and squares.</p>
+    </div>
+  </header>
 
-/* Left panel containing title and fun fact */
-.left-panel {
-  flex: 1;
-  padding: 2rem;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-}
-
-/* Grid layout for responsive design */
-.shape-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Main container with flex layout */
-.container {
-  width: 90%;
-  max-width: 1000px;
-  text-align: center;
-  z-index: 2;
-  padding-top: 3rem;
-  flex-direction: row;
-  display: flex;
-  margin: 0 auto;
-}
-
-/* Calculator card with glass morphism effect */
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: clamp(1rem, 4vw, 2rem);
-  border-radius: 20px;
-  width: min(90%, 500px);
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgb(233, 233, 233);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-  margin: 1rem;
-}
-
-/* Card heading styles */
-.card h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #fff;
-}
-
-/* Form elements styling */
-.card select, .card input, .card button {
-  width: 100%;
-  padding: 0.8rem;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-}
-
-/* Input field styling with transparency */
-.card input {
-  background: rgba(255, 255, 255, 0.15);
-  width: calc(100% - 1.6rem);
-  color: #fff;
-}
-
-/* Button styling with hover effect */
-.card button {
-  background: #591d95;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-/* Right panel alignment */
-.right-panel {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-/* Back link styling */
-.back a {
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  color: hsl(0, 0%, 100%);
-}
-
-/* Title styling */
-.title {
-  font-family: 'Italiana', cursive;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Fun fact box styling */
-.fun-fact {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  background-color: rgba(156, 135, 135, 0.1);
-  padding: 1rem;
-  border-radius: 15px;
-  line-height: 1.5;
-}
-
-/* Footer styling */
-.footer {
-  width: 100%;
-  color: white;
-  padding: 20px;
-  font-family: 'Josefin Sans', sans-serif;
-  text-align: center;
-  position: relative;
-  margin-top: 40px;
-}
-
-/* Footer link styling */
-.footer a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-}
-</style>
-
-<body>
-  <div class="bg-overlay"></div>
   <div class="container">
     <div class="shape-grid">
       <div class="left-panel">
         <h1 class="title">RECTANGLE CALCULATOR</h1>
         <p class="fun-fact">FUN FACT: Golden Rectangle — a special rectangle where the ratio of length to width is about 1.618, the Golden Ratio, found in art and nature!</p>
+        <div class="formula">
+          <div class="formula-title">Formula</div>
+          <div class="formula-code" id="formula-rect">Area = L × W, Perimeter = 2 × (L + W)</div>
+        </div>
       </div>
       <div class="right-panel">
         <div class="card">
@@ -190,6 +41,10 @@ body {
           <input type="number" id="width" placeholder="Enter Width (e.g. 3)" />
           <button onclick="calculate()">Calculate</button>
           <div id="result"></div>
+          <div class="steps">
+            <div class="steps-title">Steps</div>
+            <ol class="steps-list" id="steps-rect"></ol>
+          </div>
           <div class="back">
             <a href="../index.html">← Another shape please...</a>
           </div>
@@ -207,9 +62,11 @@ body {
       const length = parseFloat(document.getElementById("length").value);
       const width = parseFloat(document.getElementById("width").value);
       const resultElement = document.getElementById("result");
+      const steps = document.getElementById("steps-rect");
 
       if (isNaN(length) || isNaN(width)) {
         resultElement.textContent = "Please enter valid numbers.";
+        steps.innerHTML = "";
         return;
       }
 
@@ -217,11 +74,25 @@ body {
       if (operation === "area") {
         result = length * width;
         resultElement.textContent = `Area: ${result.toFixed(2)}`;
+        document.getElementById('formula-rect').textContent = 'Area = L × W';
+        steps.innerHTML = `
+          <li>Identify values: L = ${length}, W = ${width}</li>
+          <li>Use formula: Area = L × W</li>
+          <li>Compute: ${length} × ${width} = ${result.toFixed(2)}</li>
+        `;
       } else {
         result = 2 * (length + width);
         resultElement.textContent = `Perimeter: ${result.toFixed(2)}`;
+        document.getElementById('formula-rect').textContent = 'Perimeter = 2 × (L + W)';
+        steps.innerHTML = `
+          <li>Identify values: L = ${length}, W = ${width}</li>
+          <li>Sum dimensions: L + W = ${length + width}</li>
+          <li>Multiply by 2: 2 × ${length + width} = ${result.toFixed(2)}</li>
+        `;
       }
     }
   </script>
+  <script src="../theme-toggle.js"></script>
+  <script src="../random-bg.js"></script>
 </body>
 </html>

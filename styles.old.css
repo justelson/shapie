@@ -1,0 +1,491 @@
+/* Google Pixel Drop Aesthetic for Shapie */
+
+:root {
+  /* Light mode colors */
+  --color-primary: #4285F4; /* Google Blue */
+  --color-secondary: #34A853; /* Google Green */
+  --color-tertiary: #FBBC04; /* Google Yellow */
+  --color-quaternary: #EA4335; /* Google Red */
+
+  --background-color: #F8F9FA; /* Light Gray Background */
+  --surface-color: #FFFFFF; /* White Surface for Cards */
+  --text-primary-color: #202124; /* Dark Gray Text */
+  --text-secondary-color: #5F6368; /* Medium Gray Text */
+  --border-color: #DADCE0; /* Light Gray Border */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle Shadow */
+  --shadow-hover-color: rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
+  --code-background-color: #ECEFF1; /* Light gray background for code */
+}
+
+body.dark-mode {
+  /* Dark mode colors */
+  --background-color: #202124; /* Dark background */
+  --surface-color: #303134; /* Dark surface for cards */
+  --text-primary-color: #E8EAED; /* Light text */
+  --text-secondary-color: #BDC1C6; /* Lighter gray text */
+  --border-color: #5F6368; /* Darker border */
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-hover-color: rgba(0, 0, 0, 0.5);
+  --code-background-color: #3C4043; /* Darker background for code */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', 'Noto Sans', sans-serif;
+  color: var(--text-primary-color);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+/* Per-page backgrounds (simplified for a cleaner look) */
+.bg-home, .bg-circle, .bg-rectangle, .bg-triangle, .bg-trapezium {
+  background-image: none; /* Remove specific image backgrounds */
+  background-color: var(--background-color); /* Use solid background color */
+}
+
+/* Overlay removed for cleaner Material Design look */
+.bg-overlay {
+  display: none;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  text-align: center;
+  z-index: 2;
+  padding-top: 3rem;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+  /* Hero uses the page/body background for imagery. Keep a subtle overlay for contrast. */
+  background-image: none;
+  padding: 60px 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  width: 100%; /* Ensure it takes full width */
+  background-color: rgba(255, 255, 255, 0.8); /* Subtle overlay for readability */
+  background-blend-mode: overlay; /* Blend overlay with body background image */
+}
+
+.hero-section .container {
+  padding-top: 0; /* Reset padding from general container rule */
+}
+
+.hero-section .logo {
+  margin-bottom: 1rem;
+}
+
+.hero-section .title {
+  font-size: clamp(3rem, 8vw, 5rem); /* Larger title for hero */
+  margin-bottom: 0.5rem;
+}
+
+.hero-section .subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Keep the index page header text colors identical in dark mode */
+.bg-home .hero-section .title {
+  color: #202124; /* same as light-mode --text-primary-color */
+}
+
+.bg-home .hero-section .subtitle {
+  color: #5F6368; /* same as light-mode --text-secondary-color */
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+  background-color: #357AE8;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1; /* Allows main content to take available space */
+  padding: 40px 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: var(--text-primary-color);
+}
+
+
+/* Grid / two-column responsive */
+.shape-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Max 4 columns */
+  gap: 1.5rem;
+  width: 100%; /* Ensure grid takes full width of its container */
+  max-width: 1100px; /* Match container max-width */
+}
+
+/* Only on shape pages (we mark them with data-random-bg) use a 2-column layout on wider screens */
+body[data-random-bg] .shape-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.left-panel, .right-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+/* Logo and headings (adjusted for general use, hero section has specific overrides) */
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  background: var(--surface-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  box-shadow: 0 6px 12px var(--shadow-hover-color);
+}
+
+.title {
+  font-family: 'Google Sans', 'Roboto', sans-serif; /* Prefer Google Sans if available */
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.5px;
+  color: var(--text-primary-color);
+}
+
+.subtitle {
+  color: var(--text-secondary-color);
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Cards */
+.card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  color: var(--text-primary-color);
+  width: min(100%, 520px);
+  text-align: left;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: all 0.3s ease;
+  cursor: pointer; /* Indicate interactivity */
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px var(--shadow-hover-color);
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.card h1 {
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  margin-bottom: 1rem;
+  color: var(--text-primary-color);
+}
+
+.card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
+  display: block; /* Ensure icon is on its own line */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary-color);
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary-color);
+  line-height: 1.5;
+}
+
+/* Forms */
+.card select, .card input, .card button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-primary-color);
+  background-color: var(--background-color);
+  transition: all 0.3s ease;
+}
+
+.card input::placeholder {
+  color: var(--text-secondary-color);
+  opacity: 0.7;
+}
+
+.card input:focus, .card select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2); /* Focus ring with Google Blue */
+  background-color: var(--surface-color);
+}
+
+.card button {
+  background-color: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.card button:hover {
+  background-color: #357AE8; /* Slightly darker blue on hover */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.back {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.back a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back a:hover {
+  text-decoration: underline;
+}
+
+/* Fun fact */
+.fun-fact {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 1.6;
+  color: var(--text-secondary-color);
+  margin-top: 1.5rem;
+  box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+/* Formula and steps presentation */
+.formula, .steps {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  text-align: left;
+  box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+.formula-title, .steps-title {
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--text-primary-color);
+}
+
+.formula-code {
+  font-family: 'Roboto Mono', monospace; /* Monospace font for code */
+  font-size: 0.9rem;
+  color: var(--text-secondary-color);
+  background-color: var(--code-background-color); /* Use theme variable */
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: block;
+  overflow-x: auto;
+}
+
+.steps-list {
+  margin-left: 1.2rem;
+  color: var(--text-secondary-color);
+  line-height: 1.6;
+}
+
+.steps-list li {
+  margin-bottom: 0.4rem;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  color: var(--text-secondary-color);
+  padding: 24px 20px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  position: relative;
+  margin-top: auto; /* Push footer to the bottom */
+  font-size: 0.9rem;
+  background-color: var(--surface-color); /* Give it a background */
+  border-top: 1px solid var(--border-color); /* Add a top border */
+  box-shadow: 0 -2px 4px var(--shadow-color); /* Subtle shadow at the top */
+}
+
+.footer a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  box-shadow: 0 4px 8px var(--shadow-hover-color);
+}
+
+.theme-toggle .icon {
+  font-size: 1.2rem;
+  color: var(--text-primary-color);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) { /* Adjust breakpoint for 4 columns */
+  .shape-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller desktops/tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    align-items: stretch; /* Allow children to stretch to full width */
+  }
+  .container { padding-top: 2rem; }
+  .shape-grid {
+  grid-template-columns: 1fr; /* 1 column on mobile */
+    gap: 1rem;
+  }
+  .title { font-size: 1.8rem; }
+  .subtitle { font-size: 0.98rem; }
+  .card { padding: 1.2rem; }
+  .card h1 { font-size: 1.3rem; }
+  .card-icon { font-size: 2.2rem; }
+  .card-title { font-size: 1.1rem; }
+  .card-desc { font-size: 0.85rem; }
+  .fun-fact, .formula, .steps { padding: 0.8rem; }
+  .formula-code { font-size: 0.8rem; }
+  .steps-list { font-size: 0.85rem; }
+
+  .hero-section {
+    padding: 40px 15px;
+  }
+
+  .hero-section .title {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  .hero-section .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+
+  .btn-primary {
+    padding: 10px 24px;
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    margin-bottom: 2rem;
+  }
+
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+  .theme-toggle .icon {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .container { padding-top: 2.5rem; }
+}
+
+/* No specific animations for Material Design, subtle transitions are preferred */
+@media (prefers-reduced-motion: reduce) {
+  .logo, .card, .card button, .back a {
+    transition: none !important;
+    animation: none !important;
+  }
+}

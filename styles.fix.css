@@ -1,0 +1,11 @@
+/* Make formula containers same width as fun fact */
+.left-panel {
+  width: 100%;
+  max-width: 520px; /* Match card width */
+}
+
+.left-panel .fun-fact,
+.left-panel .formula,
+.left-panel .steps {
+  width: 100%;
+}

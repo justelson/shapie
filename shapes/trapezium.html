@@ -4,185 +4,31 @@
   <!-- Basic meta tags for character encoding and responsive viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- Custom favicon using trapezium emoji -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏢</text></svg>">
+  <!-- Favicon: trapezium logo -->
+  <link rel="icon" href="../assets/shapelogos/trapezium.png">
   <title>Trapezium Calculator</title>
-  <!-- Google Fonts imports for typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Italiana&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
 </head>
-<style>
-/* Main body styles with background image */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background-image: url('../assets/big.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: white;
-  width: 100%;
-  padding-top: 80px;
-}
+<body class="bg-trapezium" data-random-bg="true">
 
-/* Semi-transparent overlay for better readability */
-.bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.637);
-  z-index: -1;
-}
+  <header class="hero-section">
+    <div class="container">
+      <div class="logo"><img src="../assets/shapelogos/trapezium.png" alt="Trapezium logo"/></div>
+      <h1 class="title">TRAPEZIUM</h1>
+      <p class="subtitle">Trapezium area & perimeter calculators with step-by-step explanations.</p>
+    </div>
+  </header>
 
-/* Left panel containing title and fun fact */
-.left-panel {
-  flex: 1;
-  padding: 2rem;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-}
-
-/* Grid layout for responsive design */
-.shape-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Main container with flex layout */
-.container {
-  width: 90%;
-  max-width: 1000px;
-  text-align: center;
-  z-index: 2;
-  padding-top: 3rem;
-  flex-direction: row;
-  display: flex;
-  margin: 0 auto;
-}
-
-/* Calculator card with glass morphism effect */
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: clamp(1rem, 4vw, 2rem);
-  border-radius: 20px;
-  width: min(90%, 500px);
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgb(233, 233, 233);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-  margin: 1rem;
-}
-
-/* Card heading styles */
-.card h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #fff;
-}
-
-/* Form elements styling */
-.card select, .card input, .card button {
-  width: 100%;
-  padding: 0.8rem;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-}
-
-/* Input field styling with transparency */
-.card input {
-  background: rgba(255, 255, 255, 0.15);
-  width: calc(100% - 1.6rem);
-  color: #fff;
-}
-
-/* Button styling with hover effect */
-.card button {
-  background: #591d95;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-/* Right panel for calculator */
-.right-panel {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-/* Back link styling */
-.back {
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  text-decoration: none;
-  text-align: center;
-}
-
-.back a {
-  color: white;
-  text-decoration: none;
-}
-
-/* Title styling */
-.title {
-  font-family: 'Italiana', cursive;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Fun fact box styling */
-.fun-fact {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  background-color: rgba(156, 135, 135, 0.1);
-  padding: 1rem;
-  border-radius: 15px;
-  line-height: 1.5;
-}
-
-/* Footer styling */
-.footer {
-  width: 100%;
-  color: white;
-  padding: 20px;
-  font-family: 'Josefin Sans', sans-serif;
-  text-align: center;
-  position: relative;
-  margin-top: 40px;
-}
-
-.footer a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-}
-</style>
-
-<body>
-  <div class="bg-overlay"></div>
   <div class="container">
     <div class="shape-grid">
       <div class="left-panel">
         <h1 class="title">TRAPEZIUM CALCULATOR</h1>
         <p class="fun-fact">FUN FACT: The trapezium (or trapezoid) has only one pair of parallel sides. It's often seen in architecture, like in bridge supports and ancient temples!</p>
+        <div class="formula">
+          <div class="formula-title">Formula</div>
+          <div class="formula-code" id="formula-trap">Area = 0.5 × (top + bottom) × height; Perimeter = top + bottom + side1 + side2</div>
+        </div>
       </div>
       <div class="right-panel">
         <div class="card">
@@ -203,6 +49,10 @@ body {
           <div class ="back">
             <a href="../index.html">←  No! this shape is not my style...</a>
           </div>
+          <div class="steps">
+            <div class="steps-title">Steps</div>
+            <ol class="steps-list" id="steps-trap"></ol>
+          </div>
         </div>
       </div>
     </div>
@@ -216,15 +66,18 @@ body {
       const height = document.getElementById('height');
       const side1 = document.getElementById('side1');
       const side2 = document.getElementById('side2');
+      const formula = document.getElementById('formula-trap');
 
       if (op === 'area') {
         height.style.display = 'block';
         side1.style.display = 'none';
         side2.style.display = 'none';
+        formula.textContent = 'Area = 0.5 × (top + bottom) × height';
       } else {
         height.style.display = 'none';
         side1.style.display = 'block';
         side2.style.display = 'block';
+        formula.textContent = 'Perimeter = top + bottom + side1 + side2';
       }
     }
 
@@ -236,9 +89,11 @@ body {
       const side1 = parseFloat(document.getElementById('side1').value);
       const side2 = parseFloat(document.getElementById('side2').value);
       const resultEl = document.getElementById('result');
+      const steps = document.getElementById('steps-trap');
 
       if (isNaN(top) || isNaN(bottom)) {
         resultEl.textContent = "Please enter valid top and bottom values.";
+        steps.innerHTML = '';
         return;
       }
 
@@ -247,21 +102,31 @@ body {
       if (op === "area") {
         if (isNaN(height)) {
           resultEl.textContent = "Please enter a valid height.";
+          steps.innerHTML = '';
           return;
         }
         result = 0.5 * (top + bottom) * height;
         resultEl.textContent = `Area: ${result.toFixed(2)}`;
+        steps.innerHTML = `
+          <li>Sum parallels: top + bottom = ${top} + ${bottom} = ${(top + bottom).toFixed(2)}</li>
+          <li>Multiply by height: × ${height} = ${((top + bottom) * height).toFixed(2)}</li>
+          <li>Multiply by 0.5: × 0.5 = ${result.toFixed(2)}</li>`;
       } else {
         if (isNaN(side1) || isNaN(side2)) {
           resultEl.textContent = "Please enter valid side values.";
+          steps.innerHTML = '';
           return;
         }
         result = top + bottom + side1 + side2;
         resultEl.textContent = `Perimeter: ${result.toFixed(2)}`;
+        steps.innerHTML = `
+          <li>Sum all sides: ${top} + ${bottom} + ${side1} + ${side2} = ${result.toFixed(2)}</li>`;
       }
     }
 
     toggleFields();
   </script>
+  <script src="../theme-toggle.js"></script>
+  <script src="../random-bg.js"></script>
 </body>
 </html>

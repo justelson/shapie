@@ -4,190 +4,31 @@
   <!-- Basic meta tags for character encoding and responsive viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- Custom favicon using circle emoji -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭕</text></svg>">
+  <!-- Favicon: circle logo -->
+  <link rel="icon" href="../assets/shapelogos/circle.png">
   <title>Circle Calculator</title>
-  <!-- Google Fonts imports for typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Italiana&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
 </head>
-<style>
-/* Main body styles with background image */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background-image: url('../assets/boy.jpg');
-  background-size: cover;           /* Makes image cover entire page */
-  background-position: center;      /* Center the image */
-  background-repeat: no-repeat;     /* Prevent tiling */
-  background-attachment: fixed;     /* Optional: scroll effect */
-  color: white;
-  width: 100%;
-}
+<body class="bg-circle" data-random-bg="true">
 
-/* Semi-transparent overlay for better readability */
-.bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.637); /* Change 0.6 to desired darkness */
-  z-index: -1;
-}
+    <header class="hero-section">
+      <div class="container">
+        <div class="logo"><img src="../assets/shapelogos/circle.png" alt="Circle logo"/></div>
+        <h1 class="title">CIRCLE</h1>
+        <p class="subtitle">Circle calculations and helpers — area, circumference, sectors and more.</p>
+      </div>
+    </header>
 
-/* Left panel containing title and fun fact */
-.left-panel {
-  flex:  1;
-  padding: 2rem;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-}
-
-/* Grid layout for responsive design */
-.shape-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-/* Main container styles */
-.container {
-      width: 90%;
-      max-width: 1000px;
-      text-align: center;
-      z-index: 2;
-      padding-top: 3rem;
-    }
-
-
-/* Form elements styling */
-.card select, .card input, .card button {
-      width: 100%;
-      padding: 0.8rem;
-      margin-top: 1rem;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-    }
-
-
-/* Calculator card with glass morphism effect */
-.card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: clamp(1rem, 4vw, 2rem);
-      border-radius: 20px;
-      width: min(90%, 500px);
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: rgb(233, 233, 233);
-      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-      margin: 1rem;
-    }
-
-
-
-/* Card heading styles */
-.card h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-
-
-/* Input field styling with transparency */
-.card input {
-      background: rgba(255, 255, 255, 0.15);
-      width: calc(100% - 1.6rem);
-      color: #fff;
-    }
-
-
-/* Calculate button styling */
-.card button {
-      background: #591d95;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-/* Right panel layout */
-.right-panel {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-/* Typography styles */
-.title {
-  font-family: 'Italiana', cursive;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Fun fact box styling */
-.fun-fact {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  background-color: rgba(156, 135, 135, 0.1);
-  padding: 1rem;
-  border-radius: 15px;
-  line-height: 1.5;
-}
-
-/* Footer positioning and styling */
-.footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-
-  color: white;
-  padding: 20px;
-  font-family: 'Josefin Sans', sans-serif;
-  text-align: center;
-  position: relative;
-  margin-top: 40px;
-}
-
-
-.footer a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-
-}
-
-
-/* Optional: Prevent content from hiding behind nav */
-body {
-  padding-top: 80px;
-}
-
-
-
-</style>
-
-</head>
-
-
-<body>
-  <div class="bg-overlay"></div>
   <div class="container">
     <div class="shape-grid">
       <div class="left-panel">
         <h1 class="title">CIRCLE CALCULATOR</h1>
         <p class="fun-fact">FUN FACT: A circle has the shortest perimeter for a given area! That’s why bubbles form as circles — it’s the most efficient shape!</p>
+        <div class="formula">
+          <div class="formula-title">Formula</div>
+          <div class="formula-code" id="formula-circle">Select a type to see the formula.</div>
+        </div>
       </div>
       <div class="right-panel">
 
@@ -210,28 +51,39 @@ body {
         <button onclick="calculate()">Calculate</button>
         <div id="result"></div>
         <p>π (Pi) is approximately: <strong>3.14</strong></p>
+        <div class="steps">
+          <div class="steps-title">Steps</div>
+          <ol class="steps-list" id="steps-circle"></ol>
+        </div>
         <div class="back">
           <a href="../index.html">← Let me pick Another Shape</a>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
-</div>
-  <div class="footer">
-    <p>Made with ❤️ by <a href="https://justelson.github.io/my-official-website/">JUST ELSON</a></p>
   </div>
+  <footer class="footer">
+    <p>Made with ❤️ by <a href="https://justelson.github.io/my-official-website/">JUST ELSON</a></p>
+  </footer>
   <script>
     function updateFields() {
       const calcType = document.getElementById('calcType').value;
       const degreesField = document.getElementById('degrees');
+      const formula = document.getElementById('formula-circle');
       if (calcType.includes("sector")) {
         degreesField.style.display = 'block';
       } else {
         degreesField.style.display = 'none';
+      }
+      switch (calcType) {
+        case 'area-full': formula.textContent = 'Area (full) = πr²'; break;
+        case 'area-half': formula.textContent = 'Area (half) = (πr²) ÷ 2'; break;
+        case 'area-sector': formula.textContent = 'Area (sector) = (θ/360) × πr²'; break;
+        case 'circum-full': formula.textContent = 'Circumference (full) = 2πr'; break;
+        case 'circum-half': formula.textContent = 'Half Circumference (with diameter) = (2πr)/2 + 2r'; break;
+        case 'circum-half-nodiam': formula.textContent = 'Half Arc Length = (2πr)/2'; break;
+        case 'circum-sector': formula.textContent = 'Sector Perimeter (with radii) = (θ/360) × 2πr + 2r'; break;
+        case 'circum-sector-noradii': formula.textContent = 'Arc Length (sector) = (θ/360) × 2πr'; break;
       }
     }
 
@@ -244,9 +96,11 @@ body {
       const r = parseFloat(document.getElementById("radius").value);
       const deg = parseFloat(document.getElementById("degrees").value);
       const resultEl = document.getElementById("result");
+      const steps = document.getElementById('steps-circle');
 
       if (isNaN(r) || r <= 0) {
         resultEl.textContent = "Please enter a valid radius.";
+        steps.innerHTML = '';
         return;
       }
 
@@ -256,46 +110,76 @@ body {
         case "area-full":
           result = pie() * r * r;
           resultEl.textContent = `Full Area: ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Use π ≈ 22/7 ≈ 3.14</li>
+            <li>Formula: A = πr²</li>
+            <li>Compute: π × ${r}² = π × ${r*r} = ${result.toFixed(2)}</li>`;
           break;
         case "area-half":
           result = (pie() * r * r) / 2;
           resultEl.textContent = `Half Area: ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: A_half = (πr²)/2</li>
+            <li>Compute: (π × ${r}²)/2 = (${(pie()*r*r).toFixed(2)})/2 = ${result.toFixed(2)}</li>`;
           break;
         case "area-sector":
           if (isNaN(deg)) {
             resultEl.textContent = "Please enter valid degrees.";
+            steps.innerHTML = '';
             return;
           }
           result = (pie() * r * r) * (deg / 360);
           resultEl.textContent = `Sector Area (${deg}°): ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: A_sector = (θ/360) × πr²</li>
+            <li>Compute: (${deg}/360) × π × ${r}² = ${(deg/360).toFixed(4)} × ${(pie()*r*r).toFixed(2)} = ${result.toFixed(2)}</li>`;
           break;
         case "circum-full":
           result = 2 * pie() * r;
           resultEl.textContent = `Full Circumference: ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: C = 2πr</li>
+            <li>Compute: 2 × π × ${r} = ${result.toFixed(2)}</li>`;
           break;
         case "circum-half":
           result = (2 * pie() * r) / 2 + 2 * r;
           resultEl.textContent = `Half Circumference (with diameter): ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Arc: (2πr)/2 = ${(pie()*r).toFixed(2)}</li>
+            <li>Add diameter: + 2r = + ${2*r}</li>
+            <li>Total = ${(pie()*r).toFixed(2)} + ${2*r} = ${result.toFixed(2)}</li>`;
           break;
         case "circum-half-nodiam":
           result = (2 * pie() * r) / 2;
           resultEl.textContent = `Half Circumference (arc only): ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: Arc_half = (2πr)/2</li>
+            <li>Compute: πr = ${(pie()*r).toFixed(2)}</li>`;
           break;
         case "circum-sector":
           if (isNaN(deg)) {
             resultEl.textContent = "Please enter valid degrees.";
+            steps.innerHTML = '';
             return;
           }
           result = (2 * pie() * r) * (deg / 360) + 2 * r;
           resultEl.textContent = `Sector Circumference (${deg}° with radii): ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Arc: (θ/360) × 2πr = (${deg}/360) × ${(2*pie()*r).toFixed(2)} = ${((2*pie()*r)*(deg/360)).toFixed(2)}</li>
+            <li>Add radii: + 2r = + ${2*r}</li>
+            <li>Total = ${((2*pie()*r)*(deg/360)).toFixed(2)} + ${2*r} = ${result.toFixed(2)}</li>`;
           break;
         case "circum-sector-noradii":
           if (isNaN(deg)) {
             resultEl.textContent = "Please enter valid degrees.";
+            steps.innerHTML = '';
             return;
           }
           result = (2 * pie() * r) * (deg / 360);
           resultEl.textContent = `Arc Length (${deg}°): ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: Arc = (θ/360) × 2πr</li>
+            <li>Compute: (${deg}/360) × ${(2*pie()*r).toFixed(2)} = ${result.toFixed(2)}</li>`;
           break;
       }
     }
@@ -308,7 +192,7 @@ const menu = document.getElementById("navMenu");
     updateFields();
 
   </script>
-</div>        
-</div>
+  <script src="../theme-toggle.js"></script>
+  <script src="../random-bg.js"></script>
 </body>
 </html>

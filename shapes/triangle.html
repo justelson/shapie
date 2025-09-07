@@ -4,162 +4,31 @@
   <!-- Basic meta tags for character encoding and responsive viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- Custom favicon using triangle emoji -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔺</text></svg>">
+  <!-- Favicon: triangle logo -->
+  <link rel="icon" href="../assets/shapelogos/triangle.png">
   <title>Triangle Calculator</title>
-  <!-- Google Fonts imports for typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&Josefin+Sans:wght@300&family=Joti+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300&family=Irish+Grover&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Joti+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Italiana&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
 </head>
-<style>
-/* Main body styles with background image */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background-image: url('../assets/fog.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: white;
-  width: 100%;
-  padding-top: 80px;
-}
+<body class="bg-triangle" data-random-bg="true">
 
-/* Semi-transparent overlay for better readability */
-.bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.637);
-  z-index: -1;
-}
+  <header class="hero-section">
+    <div class="container">
+      <div class="logo"><img src="../assets/shapelogos/triangle.png" alt="Triangle logo"/></div>
+      <h1 class="title">TRIANGLE</h1>
+      <p class="subtitle">Triangle calculator — area, perimeter and right-triangle helpers.</p>
+    </div>
+  </header>
 
-/* Left panel containing title and fun fact */
-.left-panel {
-  flex: 1;
-  padding: 2rem;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-}
-
-/* Grid layout for responsive design */
-.shape-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Main container with flex layout */
-.container {
-  width: 90%;
-  max-width: 1000px;
-  text-align: center;
-  z-index: 2;
-  padding-top: 3rem;
-  flex-direction: row;
-  display: flex;
-  margin: 0 auto;
-}
-
-/* Calculator card with glass morphism effect */
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: clamp(1rem, 4vw, 2rem);
-  border-radius: 20px;
-  width: min(90%, 500px);
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgb(233, 233, 233);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-  margin: 1rem;
-}
-
-/* Form input styling */
-.card select, .card input, .card button {
-  width: 100%;
-  padding: 0.8rem;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-}
-
-.card input {
-  background: rgba(255, 255, 255, 0.15);
-  width: calc(100% - 1.6rem);
-  color: #fff;
-}
-
-.card button {
-  background: #591d95;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-/* Right panel containing calculator */
-.right-panel {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-/* Typography styles */
-.title {
-  font-family: 'Italiana', cursive;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.fun-fact {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  background-color: rgba(156, 135, 135, 0.1);
-  padding: 1rem;
-  border-radius: 15px;
-  line-height: 1.5;
-}
-
-/* Footer styling */
-.footer {
-  width: 100%;
-  color: white;
-  padding: 20px;
-  font-family: 'Josefin Sans', sans-serif;
-  text-align: center;
-  position: relative;
-  margin-top: 40px;
-}
-
-.footer a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-}
-</style>
-
-<body>
-  <div class="bg-overlay"></div>
   <div class="container">
     <div class="shape-grid">
       <div class="left-panel">
         <h1 class="title">TRIANGLE CALCULATOR</h1>
         <p class="fun-fact">FUN FACT: The triangle is the strongest shape in nature and architecture. It's always rigid — that's why it's used in bridges and roof trusses!</p>
+        <div class="formula">
+          <div class="formula-title">Formula</div>
+          <div class="formula-code" id="formula-tri">Select a type to see the formula.</div>
+        </div>
       </div>
       <div class="right-panel">
         <div class="card">
@@ -178,6 +47,10 @@ body {
 
           <button onclick="calculate()">Calculate</button>
           <div id="result"></div>
+          <div class="steps">
+            <div class="steps-title">Steps</div>
+            <ol class="steps-list" id="steps-tri"></ol>
+          </div>
 
           <div class="back">
             <a href="../index.html">← Triangles are boring another shape please..</a>
@@ -195,28 +68,37 @@ body {
       const s1 = document.getElementById("side1");
       const s2 = document.getElementById("side2");
       const s3 = document.getElementById("side3");
+      const formula = document.getElementById('formula-tri');
 
       if (type === "area") {
         s1.placeholder = "Base";
         s2.placeholder = "Height";
         s3.style.display = "none";
+        formula.textContent = 'Area = (1/2) × base × height';
       } else if (type === "perimeter") {
         s1.placeholder = "Side 1";
         s2.placeholder = "Side 2";
         s3.style.display = "block";
         s3.placeholder = "Side 3";
-      } else if (type === "hypotenuse") {
+        formula.textContent = 'Perimeter = a + b + c';
+      }
+      else if (type === "hypotenuse") {
         s1.placeholder = "Base";
         s2.placeholder = "Height";
         s3.style.display = "none";
-      } else if (type === "height") {
+        formula.textContent = 'Hypotenuse = √(base² + height²)';
+      }
+      else if (type === "height") {
         s1.placeholder = "Base";
         s2.placeholder = "Hypotenuse";
         s3.style.display = "none";
-      } else if (type === "base") {
+        formula.textContent = 'Height = √(hypotenuse² − base²)';
+      }
+      else if (type === "base") {
         s1.placeholder = "Height";
         s2.placeholder = "Hypotenuse";
         s3.style.display = "none";
+        formula.textContent = 'Base = √(hypotenuse² − height²)';
       }
     }
 
@@ -226,9 +108,11 @@ body {
       const b = parseFloat(document.getElementById("side2").value);
       const c = parseFloat(document.getElementById("side3").value);
       const resultEl = document.getElementById("result");
+      const steps = document.getElementById('steps-tri');
 
       if (isNaN(a) || isNaN(b)) {
         resultEl.textContent = "Please enter valid values.";
+        steps.innerHTML = '';
         return;
       }
 
@@ -238,39 +122,58 @@ body {
         case "area":
           result = 0.5 * a * b;
           resultEl.textContent = `Area: ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: A = (1/2) × base × height</li>
+            <li>Compute: 0.5 × ${a} × ${b} = ${result.toFixed(2)}</li>`;
           break;
         case "perimeter":
           if (isNaN(c)) {
             resultEl.textContent = "Please enter all 3 sides.";
+            steps.innerHTML = '';
             return;
           }
           result = a + b + c;
           resultEl.textContent = `Perimeter: ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Sum all sides: ${a} + ${b} + ${c} = ${result.toFixed(2)}</li>`;
           break;
         case "hypotenuse":
           result = Math.sqrt(a ** 2 + b ** 2);
           resultEl.textContent = `Hypotenuse: ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: hyp = √(base² + height²)</li>
+            <li>Compute: √(${a}² + ${b}²) = √(${(a*a).toFixed(2)} + ${(b*b).toFixed(2)}) = ${result.toFixed(2)}</li>`;
           break;
         case "height":
           if (b <= a) {
             resultEl.textContent = "Hypotenuse must be greater than base.";
+            steps.innerHTML = '';
             return;
           }
           result = Math.sqrt(b ** 2 - a ** 2);
           resultEl.textContent = `Height: ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: height = √(hyp² − base²)</li>
+            <li>Compute: √(${b}² − ${a}²) = √(${(b*b).toFixed(2)} − ${(a*a).toFixed(2)}) = ${result.toFixed(2)}</li>`;
           break;
         case "base":
           if (b <= a) {
             resultEl.textContent = "Hypotenuse must be greater than height.";
+            steps.innerHTML = '';
             return;
           }
           result = Math.sqrt(b ** 2 - a ** 2);
           resultEl.textContent = `Base: ${result.toFixed(2)}`;
+          steps.innerHTML = `
+            <li>Formula: base = √(hyp² − height²)</li>
+            <li>Compute: √(${b}² − ${a}²) = √(${(b*b).toFixed(2)} − ${(a*a).toFixed(2)}) = ${result.toFixed(2)}</li>`;
           break;
       }
     }
 
     updateFields();
   </script>
+  <script src="../theme-toggle.js"></script>
+  <script src="../random-bg.js"></script>
 </body>
 </html>
